@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Usage:
+#
+#     $ bin/compile <build-dir> <env-path>
+
+# Fail fast and fail hard.
+set -eo pipefail
+
+BUILD_DIR=$1
+ENV_DIR=$2
+BIN_DIR=$(cd "$(dirname "$0")"; pwd) # absolute path
+
+NIFI_URL="http://ftp.unicamp.br/pub/apache/nifi/1.10.0/nifi-1.10.0-bin.tar.gz"
+NIFI_DIR="apache/nifi"
+NIFI_FILENAME="nifi"
+
+source "$BIN_DIR/utils"
+
+puts-step "Found an nifi.txt"
+
+indent "Making directory ${BUILD_DIR}/${NIFI_DIR}"
+mkdir -p ${BUILD_DIR}/${NIFI_DIR}
+
+indent "Downloading and extracting ${NIFI_FILENAME}"
+curl ${NIFI_URL} -L -s -o - | tar -xz -C \
+	${BUILD_DIR}/${NIFI_DIR} -f -
+
+if [[ $? != 0 ]]; then
+  indent "Failure while downloading Nifi archive"
+  exit 1
+fi
+
+indent "Successfully extracted ${NIFI_FILENAME}"
+
+indent "Configuring Nifi"
+sed -i '137s/.*/nifi.web.http.port='"$PORT"'/' apache/nifi/nifi-1.10.0/conf/nifi.properties
