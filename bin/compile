@@ -44,13 +44,7 @@ mkdir -p ${BUILD_DIR}/.profile.d
 
 NIFI_HOME="${NIFI_DIR}/nifi-1.10.0"
 
-cd apache
-
-ls
-
-cd nifi
-
-ls
+pwd
 
 cp $BIN_DIR/post-deploy.py $NIFI_HOME/post-deploy.py
 
