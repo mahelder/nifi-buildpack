@@ -26,7 +26,7 @@ process_group_id = response.json()['processGroupStatus']['id']
 
 
 # upload template in process group
-files = {'template': open('/app/template-import.xml')}
+files = {'template': open('template-import.xml')}
 response = requests.post(base_url_api + 'process-groups/{0}/templates/upload'.format(process_group_id), files=files)
 tree = ElementTree.fromstring(response.content)
 template_id = tree[0][2].text
