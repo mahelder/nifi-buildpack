@@ -1,5 +1,6 @@
 import os
 import requests
+import time
 from xml.etree import ElementTree
 
 # file_path = '/app/nifi/conf/nifi.properties'
@@ -11,6 +12,7 @@ base_url_api = 'localhost:5000/nifi-api'
 response = requests.get(base_url)
 
 while response.status_code != 200
+    time.sleep(10)
     response = requests.get(base_url)
 
 # get process group id
@@ -19,7 +21,7 @@ process_group_id = response.json()['processGroupStatus']['id']
 
 
 # upload template in process group
-files = {'template': open('template_import.xml')}
+files = {'template': open('/app/template-import.xml')}
 response = requests.post(base_url_api + 'process-groups/{0}/templates/upload'.format(process_group_id), files=files)
 tree = ElementTree.fromstring(response.content)
 template_id = tree[0][2].text
@@ -40,3 +42,8 @@ data = {
     "state": "RUNNING"
 }
 response = requests.put(base_url_api + 'flow/process-groups/{0}'.format(process_group_id), data=data)
+
+
+
+while True:
+    time.sleep(30)
