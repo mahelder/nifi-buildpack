@@ -56,4 +56,9 @@ indent "Save build NIFI_HOME to ENV_DIR"
 NIFI_PATH="$ENV_DIR/NIFI_HOME"
 echo $NIFI_HOME >> $NIFI_PATH
 
+indent "$NIFI_HOME"
+indent "$NIFI_PATH"
+
+ls -R /app
+
 indent "Done!"
