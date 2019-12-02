@@ -42,11 +42,11 @@ PKG_CONFIG_PATH=${NIFI_HOME}
 indent "Create profile.d script"
 mkdir -p ${BUILD_DIR}/.profile.d
 
-NIFI_HOME="${HOME}/${NIFI_DIR}/nifi-1.10.0"
+NIFI_HOME="${NIFI_DIR}/nifi-1.10.0"
 
 ls $BUILD_DIR
 
-cp $BIN_DIR/post-deploy.py bin/apache/nifi/nifi-1.10.0/post-deploy.py
+cp $BIN_DIR/post-deploy.py $NIFI_HOME/post-deploy.py
 
 cat <<EOF > ${BUILD_DIR}/.profile.d/nifi.sh
   export NIFI_HOME=${NIFI_HOME}  
