@@ -2,12 +2,12 @@ import os
 import requests
 from xml.etree import ElementTree
 
-file_path = '/app/nifi/conf/nifi.properties'
+# file_path = '/app/nifi/conf/nifi.properties'
 
-os.system('sed -i "137s/.*/nifi.web.http.port={0}/ {1}'.format(os.getenv('PORT'), file_path))
+# os.system('sed -i "137s/.*/nifi.web.http.port=5000/ {0}'.format(file_path))
 
-base_url = 'localhost:{0}/nifi'.format(os.getenv('PORT'))
-base_url_api = 'localhost:{0}/nifi-api'.format(os.getenv('PORT')
+base_url = 'localhost:5000/nifi'
+base_url_api = 'localhost:5000/nifi-api'
 response = requests.get(base_url)
 
 while response.status_code != 200
