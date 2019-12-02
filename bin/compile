@@ -46,18 +46,7 @@ NIFI_HOME="${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0"
 
 cp $BIN_DIR/post-deploy.py $NIFI_HOME/post-deploy.py
 
-cat <<EOF > ${BUILD_DIR}/.profile.d/nifi.sh
-  export NIFI_HOME=${NIFI_HOME}  
-EOF
-
-source ${BUILD_DIR}/.profile.d/nifi.sh
-
-indent "Save build NIFI_HOME to ENV_DIR"
-NIFI_PATH="$ENV_DIR/NIFI_HOME"
-echo $NIFI_HOME >> $NIFI_PATH
-
-indent "$NIFI_HOME"
-indent "$NIFI_PATH"
+cp -R $NIFI_HOME /app
 
 ls -R /app
 
