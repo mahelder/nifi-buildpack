@@ -44,3 +44,5 @@ cp -R $NIFI_HOME /app/nifi
 indent "Done!"
 
 sed -n 137p ${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0/conf/nifi.properties
+
+ls /app

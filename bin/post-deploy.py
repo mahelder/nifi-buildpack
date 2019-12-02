@@ -7,6 +7,11 @@ from xml.etree import ElementTree
 
 # os.system('sed -i "137s/.*/nifi.web.http.port=5000/ {0}'.format(file_path))
 
+os.system('sh nifi/bin/nifi.sh start')
+
+print('ligando nifi')
+time.sleep(30)
+
 base_url = 'localhost:5000/nifi'
 base_url_api = 'localhost:5000/nifi-api'
 response = requests.get(base_url)
