@@ -2,6 +2,10 @@ import os
 import requests
 from xml.etree import ElementTree
 
+file_path = '/app/nifi/conf/nifi.properties'
+
+os.system('sed -i "137s/.*/nifi.web.http.port={0}/ {1}'.format(os.getenv('PORT'), file_path))
+
 base_url = 'localhost:{0}/nifi'.format(os.getenv('PORT'))
 base_url_api = 'localhost:{0}/nifi-api'.format(os.getenv('PORT')
 response = requests.get(base_url)
