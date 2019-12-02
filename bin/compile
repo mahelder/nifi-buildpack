@@ -44,9 +44,9 @@ mkdir -p ${BUILD_DIR}/.profile.d
 
 NIFI_HOME="${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0"
 
-cp $BIN_DIR/post-deploy.py $NIFI_HOME/post-deploy.py
+cp $BIN_DIR/post-deploy.py /app/post-deploy.py
 
-cp -R $NIFI_HOME /app
+cp -R $NIFI_HOME /app/nifi
 
 ls -R /app
 
