@@ -6,5 +6,5 @@ echo "---"
 if [ ! -f $BUILD_DIR/Procfile ]; then
   cd $BUILD_DIR
   echo "default_process_types:"
-  echo "  web: ls -R && sh bin/$NIFI_DIR/nifi-1.10.0/bin/nifi.sh && sh bin/post-deploy.sh"
+  echo "  web: sh $NIFI_HOME/bin/nifi.sh && python $NIFI_HOME/post-deploy.py"
 fi
