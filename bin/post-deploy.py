@@ -12,8 +12,8 @@ os.system('sh nifi/bin/nifi.sh start')
 print('ligando nifi')
 time.sleep(30)
 
-base_url = 'localhost:5000/nifi'
-base_url_api = 'localhost:5000/nifi-api'
+base_url = 'nifi-sample.nifi-sample/nifi'
+base_url_api = 'nifi-sample.nifi-sample/nifi-api'
 response = requests.get(base_url)
 
 while response.status_code != 200
