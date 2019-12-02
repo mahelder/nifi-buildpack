@@ -33,7 +33,7 @@ fi
 indent "Successfully extracted ${NIFI_FILENAME}"
 
 indent "Configuring Nifi"
-sed -i '137s/.*/nifi.web.http.port='"$PORT"'/' ${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0/conf/nifi.properties
+sed -i '137s/.*/nifi.web.http.port='"${PORT}"'/' ${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0/conf/nifi.properties
 
 NIFI_HOME="${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0"
 
