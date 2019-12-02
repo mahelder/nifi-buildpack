@@ -9,6 +9,8 @@ from xml.etree import ElementTree
 
 os.system('sh nifi/bin/nifi.sh start')
 
+os.system('sh nifi/bin/nifi.sh run')
+
 # print('ligando nifi')
 # time.sleep(30)
 
@@ -48,5 +50,5 @@ os.system('sh nifi/bin/nifi.sh start')
 # }
 # response = requests.put(base_url_api + 'flow/process-groups/{0}'.format(process_group_id), data=data)
 
-# while True:
-    # time.sleep(30)
+while True:
+    time.sleep(30)
