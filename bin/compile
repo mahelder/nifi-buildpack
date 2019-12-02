@@ -37,17 +37,10 @@ sed -i '137s/.*/nifi.web.http.port='"$PORT"'/' ${BUILD_DIR}/${NIFI_DIR}/nifi-1.1
 
 NIFI_HOME="${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0"
 
-PKG_CONFIG_PATH=${NIFI_HOME}
-
-indent "Create profile.d script"
-mkdir -p ${BUILD_DIR}/.profile.d
-
-NIFI_HOME="${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0"
-
 cp $BIN_DIR/post-deploy.py /app/post-deploy.py
 
 cp -R $NIFI_HOME /app/nifi
 
-ls -R /app
-
 indent "Done!"
+
+sed -n 137p ${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0/conf/nifi.properties
