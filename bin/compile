@@ -34,3 +34,24 @@ indent "Successfully extracted ${NIFI_FILENAME}"
 
 indent "Configuring Nifi"
 sed -i '137s/.*/nifi.web.http.port='"$PORT"'/' ${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0/conf/nifi.properties
+
+NIFI_HOME="${BUILD_DIR}/${NIFI_DIR}/nifi-1.10.0"
+
+PKG_CONFIG_PATH=${NIFI_HOME}
+
+indent "Create profile.d script"
+mkdir -p ${BUILD_DIR}/.profile.d
+
+NIFI_HOME="${HOME}/${NIFI_DIR}/nifi-1.10.0"
+
+cat <<EOF > ${BUILD_DIR}/.profile.d/nifi.sh
+  export NIFI_HOME=${NIFI_HOME}  
+EOF
+
+source ${BUILD_DIR}/.profile.d/nifi.sh
+
+indent "Save build NIFI_HOME to ENV_DIR"
+NIFI_PATH="$ENV_DIR/NIFI_HOME"
+echo $NIFI_HOME >> $NIFI_PATH
+
+indent "Done!"
